@@ -8,15 +8,35 @@ package cn.edu.cqvie.thread.t3;
  */
 public class Sequence {
 
-    private int value;
+    private static int value;
 
     /**
-     * 通过增加同步块关键字
+     * synchronized 放在普通方法上，内置锁就是当前类的实例
      *
      * @return
      */
     public synchronized int getNext() {
         return value++;
+    }
+
+    /**
+     * 修饰静态方法，内置锁是当前Class字节码对象
+     * Sequence.class
+     *
+     * @return
+     */
+    public static synchronized int getPrevious() {
+        return value--;
+    }
+
+    public int xx() {
+        synchronized (Sequence.class) {
+            if (value > 0) {
+                return value;
+            } else {
+                return -1;
+            }
+        }
     }
 
     public static void main(String[] args) {
