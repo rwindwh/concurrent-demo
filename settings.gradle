@@ -1,0 +1,5 @@
+rootProject.name = 'concurrent-demo'
+include 'concurrent-simple'
+include 'concurrent-spring'
+include 'concurrent-web'
+
